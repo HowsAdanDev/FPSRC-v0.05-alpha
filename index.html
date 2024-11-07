@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Store Redeem Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .btn-google {
+      background-color: #4285F4;
+      color: white;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .btn-generate {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .btn-disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+    .message-success {
+      background-color: #e6f4ea;
+      color: #2d6a4f;
+    }
+    .message-error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Play Store Redeem Code Generator</h2>
+
+  <!-- Google Sign-In Button (non-functional in plain HTML) -->
+  <a href="#" class="btn btn-google">Sign in with Google</a>
+
+  <!-- Secret Code Input -->
+  <div class="input-group">
+    <input type="text" id="secretCode" placeholder="Enter secret code">
+  </div>
+
+  <!-- Generate Button -->
+  <button id="generateBtn" class="btn btn-generate btn-disabled" disabled>Generate Code</button>
+
+  <!-- Message Display Area -->
+  <div id="message" class="message" style="display: none;"></div>
+</div>
+
+<script>
+  // JavaScript to control UI only (No real functionality)
+  document.getElementById("secretCode").addEventListener("input", function() {
+    const secretCode = this.value;
+    const generateBtn = document.getElementById("generateBtn");
+
+    if (secretCode === "AK700") {
+      generateBtn.classList.remove("btn-disabled");
+      generateBtn.disabled = false;
+    } else {
+      generateBtn.classList.add("btn-disabled");
+      generateBtn.disabled = true;
+    }
+  });
+
+  document.getElementById("generateBtn").addEventListener("click", function() {
+    const messageDiv = document.getElementById("message");
+    const randomCode = Math.random().toString(36).substr(2, 12).toUpperCase();
+    messageDiv.style.display = "block";
+    messageDiv.className = "message message-success";
+    messageDiv.textContent = `Your generated code is: ${randomCode}`;
+  });
+</script>
+
+</body>
+</html>
